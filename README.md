@@ -1,1 +1,2 @@
-# Dat2-JavaCSG-3dPrint-Exercise
+# JavaCSG-intro
+Intro to framework created by Tobias Grundtvig @tgrundtvig
