@@ -6,7 +6,14 @@ public class CarTest {
 
     public static void main(String[] args) {
         JavaCSG csg = JavaCSGFactory.createDefault();
-        Geometry3D cyl = csg.cylinder3D(10, 20, 32, true);
-        csg.view(cyl);
+
+        CarWheel leftFrontWheel = new CarWheel(csg, 3, 2);
+        CarWheel rightFrontWheel = new CarWheel(csg, 3, 2);
+        CarWheel leftBackWheel = new CarWheel(csg, 3, 2);
+        CarWheel rightBackWheel = new CarWheel(csg, 3, 2);
+        CarBody carBody = new CarBody(csg, 14, 7, 3);
+        Car car = new Car(csg, carBody, leftFrontWheel, rightFrontWheel, leftBackWheel, rightBackWheel);
+
+        csg.view(car.generate());
     }
 }
