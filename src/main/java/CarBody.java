@@ -23,4 +23,8 @@ public class CarBody {
     public Geometry3D generateWithTranslate(double x, double y, double z) {
         return csg.translate3D(x, y, z).transform(generate());
     }
+
+    public int getWidth() {
+        return this.width;
+    }
 }

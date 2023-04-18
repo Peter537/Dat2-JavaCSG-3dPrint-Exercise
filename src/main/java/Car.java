@@ -17,17 +17,26 @@ public class Car {
     }
 
     public Geometry3D generate() {
-        Geometry3D leftFrontWheel = this.leftFrontWheel.generateWithTranslate(-2.5, 4, 0);
-        Geometry3D rightFrontWheel = this.rightFrontWheel.generateWithTranslate(2.5, 4, 0);
-        Geometry3D leftBackWheel = this.leftBackWheel.generateWithTranslate(-2.5, -4, 0);
-        Geometry3D rightBackWheel = this.rightBackWheel.generateWithTranslate(2.5, -4, 0);
+        double x = carBody.getWidth() / 2.0;
+        Geometry3D leftFrontWheel3d = this.leftFrontWheel.generateWithTranslate(
+                -1 * (x - (this.leftFrontWheel.getWidth() / 2.0)), 4, 0);
+        Geometry3D rightFrontWheel3d = this.rightFrontWheel.generateWithTranslate(
+                1 * (x - (this.rightFrontWheel.getWidth() / 2.0)), 4, 0);
+        Geometry3D leftBackWheel3d = this.leftBackWheel.generateWithTranslate(
+                -1 * (x - (this.leftBackWheel.getWidth() / 2.0)), -4, 0);
+        Geometry3D rightBackWheel3d = this.rightBackWheel.generateWithTranslate(
+                1 * (x - (this.rightBackWheel.getWidth() / 2.0)), -4, 0);
         Geometry3D carBody = this.carBody.generateWithTranslate(0, 0, 1.9);
         Geometry3D car = csg.difference3D(carBody,
-                this.leftBackWheel.getFullSizeWithTranslate(-2.5, 4, 0),
-                this.rightFrontWheel.getFullSizeWithTranslate(2.5, 4, 0),
-                this.leftBackWheel.getFullSizeWithTranslate(-2.5, -4, 0),
-                this.rightBackWheel.getFullSizeWithTranslate(2.5, -4, 0));
+                this.leftBackWheel.getFullSizeWithTranslate(
+                        -1 * (x - (this.leftFrontWheel.getWidth() / 2.0)), 4, 0),
+                this.rightFrontWheel.getFullSizeWithTranslate(
+                        1 * (x - (this.rightFrontWheel.getWidth() / 2.0)), 4, 0),
+                this.leftBackWheel.getFullSizeWithTranslate(
+                        -1 * (x - (this.leftBackWheel.getWidth() / 2.0)), -4, 0),
+                this.rightBackWheel.getFullSizeWithTranslate(
+                        1 * (x - (this.rightBackWheel.getWidth() / 2.0)), -4, 0));
 
-        return csg.union3D(car, leftFrontWheel, rightFrontWheel, leftBackWheel, rightBackWheel);
+        return csg.union3D(car, leftFrontWheel3d, rightFrontWheel3d, leftBackWheel3d, rightBackWheel3d);
     }
 }
