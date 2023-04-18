@@ -28,7 +28,6 @@ public class Car {
                 this.leftBackWheel.getFullSizeWithTranslate(-2.5, -4, 0),
                 this.rightBackWheel.getFullSizeWithTranslate(2.5, -4, 0));
 
-        //return car;
         return csg.union3D(car, leftFrontWheel, rightFrontWheel, leftBackWheel, rightBackWheel);
     }
 }
