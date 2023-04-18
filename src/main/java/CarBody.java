@@ -15,9 +15,9 @@ public class CarBody {
 
     public Geometry3D generate() {
         Geometry3D box = csg.box3D(width, length, height, true);
-        Geometry3D frontRemoval = csg.box3D(width + 1, length * 2 + 1, height / 6.0 + 1, true);
+        Geometry3D frontRemoval = csg.box3D(width + 1, length * 3 + 1, height / 4.5 + 1, true);
         Geometry3D frontRemovalRotated = csg.rotate3DX(csg.degrees(135)).transform(frontRemoval);
-        return csg.difference3D(box, csg.translate3D(0, length / 2.0, height / 5.0).transform(frontRemovalRotated));
+        return csg.difference3D(box, csg.translate3D(0, length / 2.0, height / 4.9).transform(frontRemovalRotated));
     }
 
     public Geometry3D generateWithTranslate(double x, double y, double z) {

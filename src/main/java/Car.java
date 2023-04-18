@@ -17,12 +17,18 @@ public class Car {
     }
 
     public Geometry3D generate() {
-        Geometry3D leftFrontWheel = this.leftFrontWheel.generateWithTranslate(-2, 4, 0);
-        Geometry3D rightFrontWheel = this.rightFrontWheel.generateWithTranslate(2, 4, 0);
-        Geometry3D leftBackWheel = this.leftBackWheel.generateWithTranslate(-2, -4, 0);
-        Geometry3D rightBackWheel = this.rightBackWheel.generateWithTranslate(2, -4, 0);
-        Geometry3D carBody = this.carBody.generateWithTranslate(0, 0, 2.2);
+        Geometry3D leftFrontWheel = this.leftFrontWheel.generateWithTranslate(-2.5, 4, 0);
+        Geometry3D rightFrontWheel = this.rightFrontWheel.generateWithTranslate(2.5, 4, 0);
+        Geometry3D leftBackWheel = this.leftBackWheel.generateWithTranslate(-2.5, -4, 0);
+        Geometry3D rightBackWheel = this.rightBackWheel.generateWithTranslate(2.5, -4, 0);
+        Geometry3D carBody = this.carBody.generateWithTranslate(0, 0, 1.9);
+        Geometry3D car = csg.difference3D(carBody,
+                this.leftBackWheel.getFullSizeWithTranslate(-2.5, 4, 0),
+                this.rightFrontWheel.getFullSizeWithTranslate(2.5, 4, 0),
+                this.leftBackWheel.getFullSizeWithTranslate(-2.5, -4, 0),
+                this.rightBackWheel.getFullSizeWithTranslate(2.5, -4, 0));
 
-        return csg.union3D(carBody, leftFrontWheel, rightFrontWheel, leftBackWheel, rightBackWheel);
+        //return car;
+        return csg.union3D(car, leftFrontWheel, rightFrontWheel, leftBackWheel, rightBackWheel);
     }
 }
