@@ -21,7 +21,7 @@ public class Car {
         Geometry3D rightFrontWheel = this.rightFrontWheel.generateWithTranslate(2, 4, 0);
         Geometry3D leftBackWheel = this.leftBackWheel.generateWithTranslate(-2, -4, 0);
         Geometry3D rightBackWheel = this.rightBackWheel.generateWithTranslate(2, -4, 0);
-        Geometry3D carBody = this.carBody.generateWithTranslate(0, 0, 3);
+        Geometry3D carBody = this.carBody.generateWithTranslate(0, 0, 2.2);
 
         return csg.union3D(carBody, leftFrontWheel, rightFrontWheel, leftBackWheel, rightBackWheel);
     }

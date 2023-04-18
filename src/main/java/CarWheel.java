@@ -19,8 +19,7 @@ public class CarWheel {
         return csg.rotate3DY(csg.degrees(90)).transform(shape);
     }
 
-    public Geometry3D generateWithTranslate(int x, int y, int z) {
-        Geometry3D generated = generate();
-        return csg.translate3D(x, y, z).transform(generated);
+    public Geometry3D generateWithTranslate(double x, double y, double z) {
+        return csg.translate3D(x, y, z).transform(generate());
     }
 }
