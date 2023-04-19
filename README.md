@@ -11,8 +11,8 @@
 
 ## Car Body View
 
-![image](/Resultat/Car Body.png)
+![image](/Resultat/Car%20Body.png)
 
 ## Car Wheel View
 
-![image](/Resultat/Car Wheel.png)
+![image](/Resultat/Car%20Wheel.png)
