@@ -24,6 +24,28 @@ public class CarBody {
         return csg.translate3D(x, y, z).transform(generate());
     }
 
+    public Geometry3D generateWithWheels(CarWheel leftFrontWheel, CarWheel rightFrontWheel, CarWheel leftBackWheel, CarWheel rightBackWheel) {
+        double x = this.width / 2.0;
+        Geometry3D leftFrontWheel3d = leftFrontWheel.generateWithTranslate(
+                -1 * (x - (leftFrontWheel.getWidth() / 2.0)), 4, 0);
+        Geometry3D rightFrontWheel3d = rightFrontWheel.generateWithTranslate(
+                1 * (x - (rightFrontWheel.getWidth() / 2.0)), 4, 0);
+        Geometry3D leftBackWheel3d = leftBackWheel.generateWithTranslate(
+                -1 * (x - (leftBackWheel.getWidth() / 2.0)), -4, 0);
+        Geometry3D rightBackWheel3d = rightBackWheel.generateWithTranslate(
+                1 * (x - (rightBackWheel.getWidth() / 2.0)), -4, 0);
+        Geometry3D carBody = this.generateWithTranslate(0, 0, 1.9);
+        return csg.difference3D(carBody,
+                leftBackWheel.getFullSizeWithTranslate(
+                        -1 * (x - (leftFrontWheel.getWidth() / 2.0)), 4, 0),
+                rightFrontWheel.getFullSizeWithTranslate(
+                        1 * (x - (rightFrontWheel.getWidth() / 2.0)), 4, 0),
+                leftBackWheel.getFullSizeWithTranslate(
+                        -1 * (x - (leftBackWheel.getWidth() / 2.0)), -4, 0),
+                rightBackWheel.getFullSizeWithTranslate(
+                        1 * (x - (rightBackWheel.getWidth() / 2.0)), -4, 0));
+        }
+
     public int getWidth() {
         return this.width;
     }
